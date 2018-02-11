@@ -1,0 +1,37 @@
+{
+  "name": "todos",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-scripts": "^1.0.2"
+  },
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.33",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
+  },
+  "description": "This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaAnnaNX/card.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnaAnnaNX/card/issues"
+  },
+  "homepage": "https://github.com/AnnaAnnaNX/card#readme"
+}
