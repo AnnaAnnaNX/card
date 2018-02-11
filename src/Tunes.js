@@ -12,6 +12,7 @@ import { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
+import { connect } from 'react-redux'
 
 const styles = theme => ({
   button: {
@@ -27,12 +28,19 @@ class IconButtons extends Component {
     age: '',
     name: 'hai',
   };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render(){
-    const { classes } = this.props;
+    const { classes, layouts } = this.props;
+    console.log('layouts');
+    console.log(layouts);
     return (
       <div>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="age-simple">Age</InputLabel>
+            <InputLabel htmlFor="list-layouts">List layouts</InputLabel>
             <Select
               value={this.state.age}
               onChange={this.handleChange}
@@ -44,9 +52,9 @@ class IconButtons extends Component {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {layouts.map((layout) => (
+                <MenuItem value={ layout.image }>{ layout.image }</MenuItem>
+              ))}
             </Select>
           </FormControl>
           
@@ -77,4 +85,22 @@ IconButtons.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(IconButtons);
+function mapStateToProps(state) {
+  return {
+    // user: state.user,
+    // page: state.page
+    layouts: state.layouts
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    // pageActions: bindActionCreators(pageActions, dispatch)
+    
+    // add: image => {
+    //   dispatch(addLayout(image))
+    // }
+  }
+}
+
+export default  connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(IconButtons))
