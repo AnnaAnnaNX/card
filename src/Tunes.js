@@ -13,6 +13,7 @@ import { MenuItem } from 'material-ui/Menu';
 import { FormControl } from 'material-ui/Form';
 import Select from 'material-ui/Select';
 import { connect } from 'react-redux'
+import { addCurrentLayout, deleteLayout } from './actions/index'; 
 
 const styles = theme => ({
   button: {
@@ -31,12 +32,24 @@ class IconButtons extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    this.props.add(event.target.value);
   };
 
+  deleteLayout= event => {
+    // console.log(event.currentTarget.getAttribute('data-something'));
+    // this.props.deleteLayout(this.props.currentLayout);
+    console.log('delete currentLayout');
+    console.log(this.props.currentLayout);
+    this.props.deleteLayout(this.props.currentLayout);
+
+  }
+
   render(){
-    const { classes, layouts } = this.props;
+    const { classes, layouts, currentLayout } = this.props;
     console.log('layouts');
     console.log(layouts);
+    console.log('currentLayout')
+    console.log(currentLayout)
     return (
       <div>
           <FormControl className={classes.formControl}>
@@ -64,7 +77,7 @@ class IconButtons extends Component {
         <IconButton color="primary" className={classes.button} aria-label="Add to shopping cart">
           {/* <AddShoppingCartIcon /> */}
         </IconButton>
-        <IconButton className={classes.button} aria-label="Delete" color="primary">
+        <IconButton onClick={ this.deleteLayout } className={classes.button} aria-label="Delete" color="primary">
           <DeleteIcon />
         </IconButton>
         <IconButton className={classes.button} aria-label="Delete">
@@ -89,7 +102,8 @@ function mapStateToProps(state) {
   return {
     // user: state.user,
     // page: state.page
-    layouts: state.layouts
+    layouts: state.layouts,
+    currentLayout: state.currentLayout
   }
 }
 
@@ -97,9 +111,12 @@ function mapDispatchToProps(dispatch) {
   return {
     // pageActions: bindActionCreators(pageActions, dispatch)
     
-    // add: image => {
-    //   dispatch(addLayout(image))
-    // }
+    add: image => {
+      dispatch(addCurrentLayout(image))
+    },
+    deleteLayout: image => {
+      dispatch(deleteLayout(image))
+    },
   }
 }
 

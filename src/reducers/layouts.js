@@ -9,6 +9,10 @@ const todos = (state = [], action) => {
             editing: false
           }
         ]
+      case 'DELETE_LAYOUT':
+      return state.filter(layout =>
+        {return layout.image != action.image} 
+      )
       case 'SELECT_LAYOUT':
         return state.map(layout =>
           (layout.image === action.image) 

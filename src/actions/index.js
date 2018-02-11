@@ -14,10 +14,22 @@ export const toggleTodo = (id) => ({
   type: 'TOGGLE_TODO',
   id
 })
+/////////
 
 let nextLayoutId = 1
 export const addLayout = (image) => ({
   type: 'ADD_LAYOUT',
   id: nextLayoutId++,
+  image
+})
+
+
+export const addCurrentLayout = (image) => ({
+  type: 'SELECT_CURRENT_LAYOUT',
+  image
+})
+
+export const deleteLayout = (image) => ({
+  type: 'DELETE_LAYOUT',
   image
 })
